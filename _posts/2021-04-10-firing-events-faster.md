@@ -212,6 +212,7 @@ public class Demo4 {
                                     .bind(dispatcher, "handle", MethodType.methodType(void.class, Object.class))
                                     .asType(CALL_SITE.type())
         );
+        MutableCallSite.syncAll(new MutableCallSite[] { callSite });
         for(int i = 0; i < 1_000_000; i++) {
             doAbsolutelyNothingButSurelyItsFastRight();
         }
@@ -355,6 +356,7 @@ public class Demo5 {
                 }
                 callSite.setTarget(res.asType(callSite.type()));
             }
+            MutableCallSite.syncAll(new MutableCallSite[] { callSite });
         }
     }
 }

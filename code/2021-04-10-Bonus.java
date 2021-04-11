@@ -130,6 +130,7 @@ public class Bonus {
                 }
                 callSite.setTarget(res.asType(callSite.type()));
             }
+            MutableCallSite.syncAll(new MutableCallSite[] { callSite });
         }
     }
 }

@@ -46,6 +46,7 @@ public class CanItReallyBeThatSlow {
                             .bind(DISPATCHER, "handle", MethodType.methodType(void.class, Object.class))
                             .asType(DISPATCHER_CALL_SITE.type())
             );
+            MutableCallSite.syncAll(new MutableCallSite[] { EMPTY_DISPATCHER_CALL_SITE, DISPATCHER_CALL_SITE });
             MH_DISPATCHER.add(
                     lookup
                             .findStatic(CanItReallyBeThatSlow.class, "handleEvent", MethodType.methodType(void.class, AbsolutelyNothingHappenedEvent.class))
@@ -126,6 +127,7 @@ public class CanItReallyBeThatSlow {
                 }
                 callSite.setTarget(res.asType(callSite.type()));
             }
+            MutableCallSite.syncAll(new MutableCallSite[] { callSite });
         }
     }
 }

@@ -1,0 +1,12 @@
+show_excerpts: true
+minima:
+  social_links:
+    github: natanbc
+    twitter: natanbc_
+theme: minima
+plugins:
+  - jekyll-feed
+defaults:
+  - scope:
+      path: "_posts"
+      type: posts
